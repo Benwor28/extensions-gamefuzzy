@@ -27051,7 +27051,7 @@ const paperback_extensions_common_1 = require("paperback-extensions-common");
 const Parser_1 = require("./Parser");
 const BATOTO_DOMAIN = 'https://bato.to';
 exports.BatoToInfo = {
-    version: '2.0.1',
+    version: '2.0.2',
     name: 'Bato.To',
     description: 'Extension that pulls western comics from bato.to',
     author: 'GameFuzzy',
@@ -27360,7 +27360,7 @@ class Parser {
             titles.push(this.decodeHTMLEntity(title));
         const image = $('.shadow-6').attr('src');
         const summary = $('pre', $('.attr-main')).text().trim();
-        let status = paperback_extensions_common_1.MangaStatus.ONGOING, author, released, views = 0, isHentai = false;
+        let status = paperback_extensions_common_1.MangaStatus.ONGOING, author, released, isHentai = false;
         const rating = 0;
         let tagArray0 = [];
         let i = 0;
@@ -27369,7 +27369,7 @@ class Parser {
             switch (i) {
                 case 0: {
                     // Views
-                    views = parseInt($(itemSpan).text().split('/')[1].trim());
+                    //Don't need views
                     i++;
                     continue;
                 }
@@ -27436,8 +27436,7 @@ class Parser {
             tags: tagSections,
             desc: this.decodeHTMLEntity(summary),
             lastUpdate: released,
-            hentai: isHentai,
-            views: views
+            hentai: isHentai
         });
     }
     parseChapterList($, mangaId, source) {
