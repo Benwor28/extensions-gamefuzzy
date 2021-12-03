@@ -36,7 +36,7 @@ export class Parser {
             switch (i) {
                 case 0: {
                     // Views
-                   
+
                     //Don't need views
                     i++
                     continue
@@ -122,11 +122,11 @@ export class Parser {
             const chapter = $('b', chapterTile).text()
             const chapNum = i+1
             const volume = Number(chapter?.split('chapter')[0]?.replace('volume', '').trim())
-            
+
             const language = $('.emoji').attr('data-lang') ?? 'gb'
             const time = source.convertTime($('i.ps-3', $(obj)).text())
             if ((typeof chapterId === 'undefined')) return
-            
+
             chapters.push(createChapter({
                 id: chapterId,
                 mangaId: mangaId,
