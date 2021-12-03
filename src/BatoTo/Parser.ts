@@ -26,7 +26,7 @@ export class Parser {
 
         const summary = $('pre', $('.attr-main')).text().trim()
 
-        let status = MangaStatus.ONGOING, author, released, views = 0, isHentai = false
+        let status = MangaStatus.ONGOING, author, released, isHentai = false
         const rating = 0
 
         let tagArray0: Tag[] = []
@@ -36,7 +36,8 @@ export class Parser {
             switch (i) {
                 case 0: {
                     // Views
-                    views = parseInt($(itemSpan).text().split('/')[1].trim())
+                   
+                    //Don't need views
                     i++
                     continue
                 }
@@ -102,8 +103,7 @@ export class Parser {
             tags: tagSections,
             desc: this.decodeHTMLEntity(summary),
             lastUpdate: released,
-            hentai: isHentai,
-            views: views
+            hentai: isHentai
         })
     }
 
